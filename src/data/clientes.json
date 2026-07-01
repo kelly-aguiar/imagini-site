@@ -1,0 +1,18 @@
+{
+  "clientes": [
+    { "nome": "Giraffas",             "logo": "/images/clientes/giraffas.png",          "servico": "Redes Sociais e Tráfego Pago" },
+    { "nome": "Movi",                 "logo": "/images/clientes/movi.png",              "servico": "Redes Sociais" },
+    { "nome": "Instituto Volta Vida", "logo": "/images/clientes/ivv.png",               "servico": "Branding, Sites, Redes Sociais e Tráfego" },
+    { "nome": "Avisa Clínica Médica", "logo": "/images/clientes/avisa.png",             "servico": "Redes Sociais" },
+    { "nome": "Clínica Seraphis",     "logo": "/images/clientes/seraphis.png",          "servico": "Redes Sociais, Tráfego e Site" },
+    { "nome": "Unifetos Salvador",    "logo": "/images/clientes/unifetos.png",           "servico": "Redes Sociais e Tráfego" },
+    { "nome": "Caminito Beach Hotel", "logo": "/images/clientes/caminito.png",           "servico": "Branding" },
+    { "nome": "Clínica Bem",          "logo": "/images/clientes/clinica-bem.png",        "servico": "Branding, Site, Redes Sociais e Tráfego" },
+    { "nome": "Girassol",             "logo": "/images/clientes/girassol.png",            "servico": "Branding, Sites, Redes Sociais e Tráfego" },
+    { "nome": "Flor de Lótus",        "logo": "/images/clientes/flor-de-lotus.png",      "servico": "Branding, Sites, Redes Sociais e Tráfego" },
+    { "nome": "Recanto Verde Vida",   "logo": "/images/clientes/recanto-verde-vida.png", "servico": "Branding, Sites, Redes Sociais e Tráfego" },
+    { "nome": "Almar",                "logo": "/images/clientes/almar.png",              "servico": "Site e Redes Sociais" },
+    { "nome": "Natani Cruz",          "logo": "/images/clientes/natani-cruz.png",        "servico": "Redes Sociais e Inbound" },
+    { "nome": "Andrade Lacombe",      "logo": "/images/clientes/andrade-lacombe.png",    "servico": "Redes Sociais" }
+  ]
+}

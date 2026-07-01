@@ -1,0 +1,24 @@
+{
+  "hero_label": "Crescimento consciente",
+  "hero_titulo_1": "Onde ideias",
+  "hero_titulo_2": "ganham forma.",
+  "hero_subtitulo": "Imagini transforma ideias em crescimento, crescimento em estrutura e estrutura em conhecimento. Marketing ético, estratégico e verdadeiramente humano.",
+  "hero_cta_primario": "Quero uma parceria →",
+  "hero_cta_secundario": "Conheça a Imagini",
+  "stats": [
+    { "numero": "+300", "label": "perfis gerenciados" },
+    { "numero": "Redes", "label": "de franquias atendidas" },
+    { "numero": "+7",   "label": "setores de atuação" }
+  ],
+  "diferenciais_titulo": "A agência que respeita seu processo e entrega resultados consistentes",
+  "diferenciais": [
+    { "titulo": "Escuta ativa",              "descricao": "Compreendemos profundamente seu negócio, objetivos e limitações antes de qualquer ação." },
+    { "titulo": "Planejamento estratégico",  "descricao": "Criamos estratégias viáveis baseadas em dados reais — não em projeções otimistas." },
+    { "titulo": "Execução responsável",      "descricao": "Implementamos com transparência e acompanhamento contínuo. Sem sumiço após o contrato." },
+    { "titulo": "Relacionamento verdadeiro", "descricao": "Comunicação clara, honesta e acolhedora. Parceiros presentes em cada etapa da jornada." }
+  ],
+  "cta_titulo": "Sua empresa merece uma agência que entende suas necessidades reais.",
+  "cta_subtitulo": "Planejamento sério. Atendimento acolhedor. Resultados mensuráveis.",
+  "cta_botao_primario": "Fale conosco agora",
+  "cta_botao_secundario": "Conheça nossos serviços"
+}

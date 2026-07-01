@@ -1,0 +1,54 @@
+{
+  "lista": [
+    { "icone": "qtl",    "nome": "Social Media",       "descricao": "Estratégia, planejamento e gestão completa das suas redes sociais." },
+    { "icone": "dome",   "nome": "Tráfego Pago",       "descricao": "Meta Ads e Google Ads com acompanhamento transparente de performance." },
+    { "icone": "akoma",  "nome": "Automações",         "descricao": "WhatsApp Business API, chatbots e fluxos inteligentes de atendimento." },
+    { "icone": "circle", "nome": "Sites & Landing Pages", "descricao": "Presença digital de alta conversão, do design à publicação." },
+    { "icone": "dright", "nome": "Branding",           "descricao": "Identidade visual, posicionamento e brand book para sua marca." },
+    { "icone": "qbr",    "nome": "Captação de Vídeos", "descricao": "Direção criativa e produção de vídeo para redes sociais e anúncios." },
+    { "icone": "bowl",   "nome": "Edição de Vídeo",    "descricao": "Edição profissional para Reels, Stories, TikTok e campanhas." }
+  ],
+  "presence_setup": [
+    "Branding essencial",
+    "Identidade visual digital",
+    "Brand Book Essencial",
+    "Estratégia de inauguração",
+    "Landing Page de inauguração",
+    "Planejamento estratégico de tráfego"
+  ],
+  "presence_social_media": [
+    "Planejamento editorial",
+    "Captação de vídeos",
+    "Edição de imagem e vídeo",
+    "Design de posts",
+    "Legendas estratégicas",
+    "Gestão do perfil"
+  ],
+  "presence_mensais": [
+    "Gestão de tráfego pago",
+    "Monitoramento e otimização de performance"
+  ],
+  "structure_setup": [
+    "Estruturação completa do funil digital",
+    "Setup de WhatsApp Business API",
+    "Criação de menu automático e automações",
+    "Setup de sistema de agendamento",
+    "Padronização operacional do atendimento"
+  ],
+  "structure_mensais": [
+    "Gestão de WhatsApp e automações",
+    "Análise integrada de dados",
+    "Consultoria estratégica contínua"
+  ],
+  "comparativo": [
+    { "item": "Branding + identidade visual",     "presence": true,  "structure": true },
+    { "item": "Social Media completo",             "presence": true,  "structure": true },
+    { "item": "Tráfego pago gerenciado",           "presence": true,  "structure": true },
+    { "item": "Landing Page",                      "presence": true,  "structure": true },
+    { "item": "Funil digital estruturado",         "presence": false, "structure": true },
+    { "item": "WhatsApp Business API + automações","presence": false, "structure": true },
+    { "item": "Sistema de agendamento",            "presence": false, "structure": true },
+    { "item": "Consultoria estratégica mensal",    "presence": false, "structure": true },
+    { "item": "Análise integrada de dados",        "presence": false, "structure": true }
+  ]
+}

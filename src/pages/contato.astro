@@ -1,0 +1,213 @@
+---
+import Layout from '../layouts/Layout.astro';
+import contatoData from '../data/contato.json';
+
+const { email, instagram_handle, instagram_url, linkedin_label, linkedin_url, promessa_texto, promessa_prazo } = contatoData;
+---
+
+<Layout
+  title="Contato"
+  description="Fale com a Imagini. Vamos conversar sobre os objetivos reais do seu negócio — sem pressão, só escuta ativa."
+>
+
+  <!-- HERO -->
+  <section class="contato-hero">
+    <div class="container">
+      <div class="section-label">Fale conosco</div>
+      <h1 class="display">
+        Vamos conversar<br />
+        sobre o <em>seu</em> negócio.
+      </h1>
+      <p class="hero-sub">
+        Sem pressão. Sem promessas irreais. Só escuta ativa e uma conversa honesta sobre o que você realmente precisa.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTATO GRID -->
+  <section>
+    <div class="container contato-grid">
+
+      <!-- FORMULÁRIO -->
+      <div class="form-col">
+        <h2 class="h3" style="margin-bottom:32px;">Envie uma mensagem</h2>
+        <form
+          name="contato"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="form"
+        >
+          <input type="hidden" name="form-name" value="contato" />
+          <p style="display:none;"><label>Não preencher: <input name="bot-field" /></label></p>
+
+          <div class="form-group">
+            <label for="nome">Seu nome *</label>
+            <input type="text" id="nome" name="nome" required placeholder="Como você se chama?" />
+          </div>
+
+          <div class="form-group">
+            <label for="empresa">Empresa / negócio</label>
+            <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa (opcional)" />
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" required placeholder="seu@email.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" />
+          </div>
+
+          <div class="form-group">
+            <label for="servico">Qual serviço te interessa?</label>
+            <select id="servico" name="servico">
+              <option value="">Escolha uma opção</option>
+              <option>Gestão de Redes Sociais</option>
+              <option>Criação de Conteúdo</option>
+              <option>Tráfego Pago</option>
+              <option>Branding Digital</option>
+              <option>Consultoria Estratégica</option>
+              <option>Não sei ainda — quero conversar</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label for="mensagem">Conte um pouco sobre o seu negócio *</label>
+            <textarea id="mensagem" name="mensagem" required rows="5" placeholder="O que você faz, qual é o momento do seu negócio, o que você busca..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary form-submit">
+            Enviar mensagem →
+          </button>
+        </form>
+      </div>
+
+      <!-- INFO LATERAL -->
+      <div class="info-col">
+        <div class="info-block">
+          <div class="info-icon">✉</div>
+          <h3 class="h4">E-mail</h3>
+          <a href={`mailto:${email}`}>{email}</a>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <h3 class="h4">Instagram</h3>
+          <a href={instagram_url} target="_blank" rel="noopener">{instagram_handle}</a>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12,0 L24,0 L24,24 L0,24 L0,12 A12,12 0 0,0 12,0 Z"/></svg>
+          </div>
+          <h3 class="h4">LinkedIn</h3>
+          <a href={linkedin_url} target="_blank" rel="noopener">{linkedin_label}</a>
+        </div>
+
+        <div class="promise-card">
+          <h3 class="h4">Nossa promessa de resposta</h3>
+          <p>{promessa_texto}</p>
+          <p style="margin-top:12px; font-weight:600; color:var(--primary);">{promessa_prazo}</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .contato-hero {
+    padding: 96px 0 80px;
+    background: linear-gradient(135deg, var(--primary-light) 0%, white 60%);
+  }
+  .contato-hero h1 { margin: 16px 0 24px; }
+  .contato-hero h1 em { font-style: normal; color: var(--primary); }
+  .hero-sub { font-size: 19px; color: var(--text-muted); max-width: 500px; line-height: 1.7; }
+
+  .contato-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group.full { grid-column: span 2; }
+  .form-group label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    text-transform: uppercase;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 14px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--text);
+    background: white;
+    transition: border-color 0.18s;
+    outline: none;
+    resize: vertical;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: var(--text-light); }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--primary); }
+
+  .form-submit { grid-column: span 2; margin-top: 8px; font-size: 16px; padding: 16px 28px; }
+
+  .info-col { display: flex; flex-direction: column; gap: 32px; padding-top: 52px; }
+
+  .info-block { display: flex; flex-direction: column; gap: 6px; }
+  .info-icon { color: var(--accent); margin-bottom: 4px; display: flex; }
+  .info-block h3 { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); }
+  .info-block a { font-size: 16px; font-weight: 600; color: var(--text); transition: color 0.18s; }
+  .info-block a:hover { color: var(--primary); }
+
+  .promise-card {
+    background: var(--primary-light);
+    border: 1.5px solid var(--primary-mid);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+  }
+  .promise-card h3 {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .promise-card p { font-size: 15px; color: var(--text-muted); line-height: 1.65; }
+
+  @media (max-width: 900px) {
+    .contato-grid { grid-template-columns: 1fr; gap: 48px; }
+    .info-col { padding-top: 0; }
+  }
+  @media (max-width: 640px) {
+    .contato-hero { padding: 56px 0 48px; }
+    .hero-sub { font-size: 16px; }
+    .form { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: span 1; }
+    .form-submit { grid-column: span 1; width: 100%; justify-content: center; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea { font-size: 16px; }
+  }
+</style>

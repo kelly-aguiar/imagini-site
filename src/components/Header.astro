@@ -1,0 +1,156 @@
+---
+const navLinks = [
+  { href: '/', label: 'Início' },
+  { href: '/sobre', label: 'Sobre' },
+  { href: '/servicos', label: 'Serviços' },
+  { href: '/portfolio', label: 'Portfólio' },
+  { href: '/noticias', label: 'Notícias' },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="Imagini — Página inicial">
+      <img src="/images/logo-imagini.png" alt="Imagini" />
+    </a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class:list={['nav-link', { active: currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) }]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="header-cta">
+      <a href="/contato" class="btn btn-primary">Fale conosco</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    {navLinks.map(link => (
+      <a href={link.href} class="mobile-link">{link.label}</a>
+    ))}
+    <a href="/contato" class="btn btn-primary mobile-btn">Fale conosco</a>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.2s;
+  }
+  .header.scrolled { box-shadow: var(--shadow); }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    height: 72px;
+  }
+
+  .logo img { height: 36px; width: auto; }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 16px;
+    flex: 1;
+  }
+
+  .nav-link {
+    padding: 8px 14px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: all 0.18s;
+  }
+  .nav-link:hover { color: var(--primary); background: var(--primary-light); }
+  .nav-link.active { color: var(--primary); font-weight: 600; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: auto;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.22s;
+  }
+
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    padding: 16px 24px 24px;
+    border-top: 1px solid var(--border);
+    gap: 4px;
+    animation: slideDown 0.2s ease;
+  }
+  .mobile-nav.open { display: flex; }
+
+  .mobile-link {
+    padding: 13px 16px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-muted);
+    border-radius: var(--radius);
+    transition: all 0.18s;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+  .mobile-link:hover { color: var(--primary); background: var(--primary-light); }
+
+  .mobile-btn { margin-top: 12px; text-align: center; justify-content: center; }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .nav, .header-cta { display: none; }
+    .hamburger { display: flex; }
+  }
+</style>
+
+<script>
+  const header = document.getElementById('header');
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('scrolled', window.scrollY > 8);
+  });
+
+  hamburger?.addEventListener('click', () => {
+    const open = mobileNav?.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    mobileNav?.setAttribute('aria-hidden', open ? 'false' : 'true');
+  });
+</script>

@@ -1,0 +1,353 @@
+---
+import Layout from '../layouts/Layout.astro';
+import sobreData from '../data/sobre.json';
+
+const { metodologia, visao_pares, mercado_entrega, imagini_entrega } = sobreData;
+---
+
+<Layout
+  title="Sobre"
+  description="Imagini nasce da raiz latina de imagem — o lugar onde ideias ganham forma. Conheça nossa visão, filosofia e ecossistema de crescimento consciente."
+>
+
+  <!-- HERO -->
+  <section class="sobre-hero">
+    <div class="container">
+      <div class="section-label">A origem</div>
+      <h1 class="display">
+        Onde o invisível<br />
+        começa a se tornar <em>visível.</em>
+      </h1>
+      <p class="sobre-lead">
+        Imagini é a raiz etimológica latina da palavra imagem — do grego <em>eidea</em>. Para Platão, a ideia não era uma simples aparência: era a realidade profunda por trás de cada ser. Antes de algo existir no mundo, existe como ideia.
+      </p>
+    </div>
+  </section>
+
+  <!-- ORIGEM DO NOME -->
+  <section class="alt">
+    <div class="container">
+      <div class="grid-2 align-center">
+        <div>
+          <div class="section-label">Por que Imagini</div>
+          <h2 class="h2">O lugar onde ideias ganham forma.</h2>
+          <p style="margin-top:24px; color:var(--text-muted); font-size:17px; line-height:1.8;">
+            Nascemos exatamente desse lugar: onde a visão vira realidade, onde o intangível começa a se tornar concreto. A Imagini existe para transformar ideias em crescimento real — para empresas e para as pessoas que as constroem.
+          </p>
+          <p style="margin-top:16px; color:var(--text-muted); font-size:17px; line-height:1.8;">
+            Não vendemos serviços. Construímos jornadas.
+          </p>
+        </div>
+        <div class="quote-block">
+          <blockquote>
+            "Imagini transforma ideias em crescimento, crescimento em estrutura e estrutura em conhecimento."
+          </blockquote>
+          <cite>— Frase-essência da marca</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISÃO -->
+  <section>
+    <div class="container">
+      <div class="section-label">Nossa visão</div>
+      <h2 class="h2" style="max-width:700px; margin-bottom:40px;">
+        Integrar o que o mercado insiste em separar.
+      </h2>
+      <div class="visao-grid">
+        {visao_pares.map(par => (
+          <div class="visao-item">
+            <span class="visao-de">{par.de}</span>
+            <span class="visao-plus">+</span>
+            <span class="visao-e">{par.e}</span>
+          </div>
+        ))}
+      </div>
+      <p class="visao-conclusao">
+        Ajudamos empresas a crescerem <strong>sem perder a alma</strong>. E ajudamos pessoas a crescerem <strong>sem perder o sentido</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ECOSSISTEMA -->
+  <section class="dark">
+    <div class="container">
+      <div class="section-label">O ecossistema</div>
+      <h2 class="h2" style="color:white; margin-bottom:16px;">
+        Três frentes para cada fase do crescimento.
+      </h2>
+      <p style="color:rgba(255,255,255,0.55); font-size:17px; margin-bottom:64px; max-width:600px;">
+        Todo negócio passa por três estágios inevitáveis. A Imagini existe para acompanhar cada um deles.
+      </p>
+      <div class="eco-grid">
+        <div class="eco-card">
+          <div class="eco-num">01</div>
+          <div class="eco-tag">Agency</div>
+          <h3 class="h3" style="color:white; margin:16px 0 12px;">Crescimento</h3>
+          <p>
+            Marketing estratégico baseado em dados reais. Gestão de redes sociais, criação de conteúdo, tráfego pago e posicionamento de marca. O motor de expansão do ecossistema.
+          </p>
+          <a href="/servicos" class="eco-link">Ver serviços →</a>
+        </div>
+        <div class="eco-card featured">
+          <div class="eco-num">02</div>
+          <div class="eco-tag">Consulting</div>
+          <h3 class="h3" style="color:white; margin:16px 0 12px;">Estrutura</h3>
+          <p>
+            Quando o crescimento precisa virar sustentação. Compliance, gestão, cultura organizacional, imagem e reputação. Para negócios que querem longevidade real.
+          </p>
+          <span class="eco-badge">Em breve</span>
+        </div>
+        <div class="eco-card">
+          <div class="eco-num">03</div>
+          <div class="eco-tag">Academy</div>
+          <h3 class="h3" style="color:white; margin:16px 0 12px;">Conhecimento</h3>
+          <p>
+            O conhecimento acumulado transformado em legado. Cursos, formações, mentorias e comunidades. Onde o ecossistema fecha o ciclo e gera recorrência.
+          </p>
+          <span class="eco-badge">Em breve</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METODOLOGIA -->
+  <section>
+    <div class="container">
+      <div class="section-label">Como trabalhamos</div>
+      <h2 class="h2" style="margin-bottom:56px;">Estratégia + Humanização + Verdade</h2>
+      <div class="metodologia-list">
+        {metodologia.map((item, i) => (
+          <div class="metodo-item">
+            <span class="metodo-num">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3 class="h3">{item.titulo}</h3>
+              <p>{item.descricao}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAL VS MERCADO -->
+  <section class="alt">
+    <div class="container">
+      <div class="section-label">Nosso diferencial</div>
+      <h2 class="h2" style="margin-bottom:48px;">O que mudamos na sua experiência</h2>
+      <div class="compare-table">
+        <div class="compare-col header">
+          <div class="compare-cell head">O mercado entrega</div>
+          {mercado_entrega.map(d => <div class="compare-cell bad">{d}</div>)}
+        </div>
+        <div class="compare-col highlight">
+          <div class="compare-cell head">A Imagini entrega</div>
+          {imagini_entrega.map(d => <div class="compare-cell good">{d}</div>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="container" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">Próximo passo</div>
+      <h2 class="h2" style="margin-bottom:20px;">Pronto para uma parceria que respeita o seu processo?</h2>
+      <p style="color:var(--text-muted); font-size:17px; margin-bottom:40px; max-width:500px; margin-left:auto; margin-right:auto;">
+        Vamos conversar sobre os objetivos reais do seu negócio.
+      </p>
+      <a href="/contato" class="btn btn-primary" style="font-size:16px; padding:16px 36px;">Fale com a Imagini →</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .sobre-hero {
+    padding: 96px 0 80px;
+    background: linear-gradient(135deg, var(--primary-light) 0%, white 60%);
+  }
+  .sobre-hero h1 { margin: 16px 0 28px; }
+  .sobre-hero h1 em { font-style: normal; color: var(--primary); }
+  .sobre-lead {
+    font-size: 19px;
+    color: var(--text-muted);
+    max-width: 620px;
+    line-height: 1.75;
+  }
+  .sobre-lead em { font-style: italic; color: var(--primary); }
+
+  .align-center { align-items: center; }
+
+  .quote-block {
+    background: var(--primary);
+    border-radius: var(--radius-xl);
+    padding: 48px;
+    color: white;
+  }
+  .quote-block blockquote {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 20px;
+  }
+  .quote-block cite { font-size: 13px; color: rgba(255,255,255,0.45); }
+
+  .visao-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .visao-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 32px 20px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .visao-item:hover { border-color: var(--primary-mid); background: var(--primary-light); }
+  .visao-de { font-size: 16px; font-weight: 700; color: var(--text); }
+  .visao-plus { font-size: 20px; color: var(--accent); font-weight: 900; line-height: 1; }
+  .visao-e { font-size: 16px; font-weight: 700; color: var(--primary); }
+  .visao-conclusao {
+    font-size: 19px;
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+  .visao-conclusao strong { color: var(--text); }
+
+  .eco-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .eco-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .eco-card.featured {
+    background: rgba(248,185,103,0.08);
+    border-color: rgba(248,185,103,0.25);
+  }
+  .eco-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--accent);
+    opacity: 0.3;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .eco-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .eco-card p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.65; }
+  .eco-link {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    transition: opacity 0.2s;
+  }
+  .eco-link:hover { opacity: 0.7; }
+  .eco-badge {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.15);
+    width: fit-content;
+  }
+
+  .metodologia-list { display: flex; flex-direction: column; }
+  .metodo-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .metodo-item:last-child { border-bottom: none; }
+  .metodo-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--accent);
+    opacity: 0.5;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 64px;
+  }
+  .metodo-item h3 { margin-bottom: 8px; }
+  .metodo-item p { color: var(--text-muted); font-size: 16px; line-height: 1.65; max-width: 600px; }
+
+  .compare-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1.5px solid var(--border);
+  }
+  .compare-col { display: flex; flex-direction: column; }
+  .compare-cell {
+    padding: 20px 28px;
+    font-size: 15px;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .compare-cell.head {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 18px 28px;
+  }
+  .compare-cell.bad { color: var(--text-muted); }
+  .compare-cell.bad::before { content: '✕ '; color: #c0392b; font-weight: 700; }
+  .compare-col.highlight { background: var(--primary-light); }
+  .compare-col.highlight .head { background: var(--primary); color: white; }
+  .compare-col.highlight .compare-cell.good { color: var(--text); }
+  .compare-cell.good::before { content: '✓ '; color: var(--primary); font-weight: 700; }
+
+  @media (max-width: 900px) {
+    .eco-grid { grid-template-columns: 1fr; }
+    .visao-grid { grid-template-columns: 1fr 1fr; }
+    .compare-table { grid-template-columns: 1fr; }
+    .metodo-item { flex-direction: column; gap: 12px; }
+    .metodo-num { font-size: 32px; width: auto; }
+  }
+  @media (max-width: 640px) {
+    .sobre-lead { font-size: 16px; }
+    .visao-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .visao-item { padding: 20px 14px; }
+    .visao-de, .visao-e { font-size: 14px; }
+    .quote-block { padding: 28px 24px; }
+    .quote-block blockquote { font-size: 18px; }
+    .eco-card { padding: 28px 24px; }
+    .compare-cell { padding: 16px 20px; font-size: 14px; }
+    .compare-cell.head { padding: 14px 20px; }
+  }
+</style>

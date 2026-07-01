@@ -1,0 +1,422 @@
+---
+import Layout from '../layouts/Layout.astro';
+import servicosData from '../data/servicos.json';
+
+const { lista, presence_setup, presence_social_media, presence_mensais, structure_setup, structure_mensais, comparativo } = servicosData;
+
+const ak: Record<string, string> = {
+  qtl:    `<path d="M12,0 L24,0 L24,24 L0,24 L0,12 A12,12 0 0,0 12,0 Z"/>`,
+  circle: `<circle cx="12" cy="12" r="10"/>`,
+  dome:   `<path d="M2,12 A10,10 0 0,0 22,12 Z"/>`,
+  dright: `<path d="M12,2 A10,10 0 0,1 12,22 Z"/>`,
+  qbr:    `<path d="M0,0 L24,0 L24,12 A12,12 0 0,0 12,24 L0,24 Z"/>`,
+  bowl:   `<path d="M2,12 A10,10 0 0,1 22,12 Z"/>`,
+  akoma:  `<path d="M7,12 A5,5 0 0,0 17,12 Z M12,7 A5,5 0 0,1 12,17 Z M7,12 A5,5 0 0,1 17,12 Z M12,7 A5,5 0 0,0 12,17 Z"/><circle cx="12" cy="12" r="2.2"/>`,
+};
+---
+
+<Layout
+  title="Serviços"
+  description="Pacotes Imagini Agency: Social Media, Tráfego Pago, Automações, Sites, Branding e Vídeo. Marketing digital estratégico e humanizado."
+>
+
+  <!-- HERO -->
+  <section class="hero-serv">
+    <div class="container">
+      <div class="section-label">Imagini Agency</div>
+      <h1 class="display">
+        Sua marca, do zero<br />ao <em>resultado.</em>
+      </h1>
+      <p class="hero-sub">
+        Não vendemos pacotes engessados. Construímos a presença digital da sua empresa com estratégia, conteúdo e tecnologia — tudo integrado, tudo com propósito.
+      </p>
+      <div class="hero-pills">
+        <a href="#pacotes" class="pill active">Ver pacotes</a>
+        <a href="#servicos" class="pill">Serviços</a>
+        <a href="/contato" class="pill">Fale conosco</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS INDIVIDUAIS -->
+  <section id="servicos" class="alt serv-section">
+    <div class="container">
+      <div class="section-label">O que fazemos</div>
+      <h2 class="h2" style="margin-bottom:48px;">Sete frentes.<br />Uma estratégia integrada.</h2>
+      <div class="serv-scroll">
+        {lista.map(s => (
+          <div class="serv-chip">
+            <span class="serv-chip-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" set:html={ak[s.icone] ?? ak.circle}/>
+            </span>
+            <div>
+              <strong>{s.nome}</strong>
+              <p>{s.descricao}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PACOTES -->
+  <section id="pacotes" class="pacotes-section">
+    <div class="container">
+      <div class="section-label">Pacotes</div>
+      <h2 class="h2" style="margin-bottom:16px; max-width:580px;">
+        Escolha o nível de presença que o seu negócio merece.
+      </h2>
+      <p class="pacotes-sub">
+        Todos os pacotes começam com um setup dedicado e evoluem para mensalidade recorrente. Sem contratos surpresa — só parceria transparente.
+      </p>
+
+      <div class="pacotes-grid">
+
+        <!-- PRESENCE -->
+        <div class="pacote-card">
+          <div class="pacote-header">
+            <div class="pacote-label">Imagini</div>
+            <div class="pacote-name">Presence</div>
+            <p class="pacote-tagline">Posicionamento, Conteúdo & Inauguração</p>
+          </div>
+
+          <div class="pacote-body">
+            <div class="entrega-group">
+              <div class="entrega-group-title">Setup — entregas únicas</div>
+              {presence_setup.map(e => <div class="entrega-item">{e}</div>)}
+            </div>
+
+            <div class="entrega-group">
+              <div class="entrega-group-title">Mensais — entregas recorrentes</div>
+              <div class="entrega-item entrega-parent">Social Media Management
+                <div class="entrega-sub-list">
+                  {presence_social_media.map(s => <span>{s}</span>)}
+                </div>
+              </div>
+              {presence_mensais.map(e => <div class="entrega-item">{e}</div>)}
+            </div>
+          </div>
+
+          <a href="/contato?pacote=presence" class="btn btn-outline pacote-cta">
+            Quero o Presence →
+          </a>
+        </div>
+
+        <!-- STRUCTURE (destaque) -->
+        <div class="pacote-card featured">
+          <div class="pacote-badge">Nossa indicação</div>
+
+          <div class="pacote-header">
+            <div class="pacote-label">Imagini</div>
+            <div class="pacote-name">Structure</div>
+            <p class="pacote-tagline">Posicionamento, Conteúdo, Funil & Operação</p>
+          </div>
+
+          <div class="pacote-body">
+            <div class="entrega-group">
+              <div class="entrega-group-title">Inclui tudo do Presence, mais:</div>
+            </div>
+
+            <div class="entrega-group">
+              <div class="entrega-group-title">Setup adicional</div>
+              {structure_setup.map(e => <div class="entrega-item">{e}</div>)}
+            </div>
+
+            <div class="entrega-group">
+              <div class="entrega-group-title">Mensais adicionais</div>
+              {structure_mensais.map(e => <div class="entrega-item">{e}</div>)}
+            </div>
+          </div>
+
+          <a href="/contato?pacote=structure" class="btn btn-accent pacote-cta">
+            Quero o Structure →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARATIVO -->
+  <section class="alt">
+    <div class="container">
+      <div class="section-label">Entenda a diferença</div>
+      <h2 class="h2" style="margin-bottom:48px;">Presence ou Structure?</h2>
+      <div class="diff-compare">
+        <div class="dc-row dc-header">
+          <div></div>
+          <div class="dc-col-label">Presence</div>
+          <div class="dc-col-label highlight">Structure</div>
+        </div>
+        {comparativo.map(({ item, presence, structure }) => (
+          <div class="dc-row">
+            <div class="dc-feat">{item}</div>
+            <div class:list={['dc-val', { yes: presence, no: !presence }]}>{presence ? '✓' : '—'}</div>
+            <div class:list={['dc-val highlight', { yes: structure, no: !structure }]}>{structure ? '✓' : '—'}</div>
+          </div>
+        ))}
+        <div class="dc-row dc-footer">
+          <div></div>
+          <div class="dc-price-cell">
+            <a href="/contato?pacote=presence" class="btn btn-outline btn-sm">Quero o Presence</a>
+          </div>
+          <div class="dc-price-cell highlight">
+            <a href="/contato?pacote=structure" class="btn btn-primary btn-sm">Quero o Structure</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="dark">
+    <div class="container" style="text-align:center; max-width:680px;">
+      <div class="section-label" style="justify-content:center;">Próximo passo</div>
+      <h2 class="h2" style="color:white; margin-bottom:20px;">
+        Não tem certeza de qual pacote faz sentido?
+      </h2>
+      <p style="font-size:18px; color:rgba(255,255,255,0.55); margin-bottom:40px; line-height:1.7;">
+        Manda uma mensagem. A gente ouve o que você precisa e indica o melhor caminho — sem pressão.
+      </p>
+      <a href="/contato" class="btn btn-accent" style="font-size:16px; padding:16px 40px;">Fale conosco agora →</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .hero-serv {
+    padding: 96px 0 80px;
+    background: linear-gradient(160deg, var(--bg-dark) 0%, #2a0e16 100%);
+  }
+  .hero-serv .section-label { color: var(--accent); }
+  .hero-serv .section-label::before { background: var(--accent); }
+  .hero-serv h1 { margin: 16px 0 24px; color: white; }
+  .hero-serv h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub { font-size: 19px; color: rgba(255,255,255,0.55); max-width: 540px; line-height: 1.7; margin-bottom: 40px; }
+
+  .hero-pills { display: flex; gap: 12px; flex-wrap: wrap; }
+  .pill {
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1.5px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.55);
+    transition: all 0.2s;
+  }
+  .pill:hover, .pill.active { border-color: var(--accent); color: var(--accent); }
+
+  .serv-section { padding-bottom: 80px; }
+  .serv-scroll {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+  .serv-chip {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px 28px;
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: all 0.2s;
+  }
+  .serv-chip:hover { border-color: var(--primary-mid); box-shadow: var(--shadow); }
+  .serv-chip-icon { color: var(--accent); flex-shrink: 0; display: flex; align-items: flex-start; padding-top: 2px; }
+  .serv-chip strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .serv-chip p { font-size: 14px; color: var(--text-muted); line-height: 1.55; margin: 0; }
+
+  .pacotes-section { background: var(--bg-dark); padding: 96px 0; }
+  .pacotes-section .section-label { color: var(--accent); }
+  .pacotes-section .section-label::before { background: var(--accent); }
+  .pacotes-section h2 { color: white; }
+  .pacotes-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.45);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+  }
+
+  .pacotes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .pacote-card {
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-xl);
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  .pacote-card.featured {
+    background: rgba(248,185,103,0.06);
+    border-color: var(--accent);
+  }
+
+  .pacote-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: var(--bg-dark);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .pacote-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 4px;
+  }
+  .pacote-name {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .pacote-card.featured .pacote-name { color: var(--accent); }
+  .pacote-tagline { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.5; margin-bottom: 32px; }
+
+  .pacote-body { flex: 1; display: flex; flex-direction: column; gap: 24px; margin-bottom: 36px; }
+
+  .entrega-group { display: flex; flex-direction: column; gap: 8px; }
+  .entrega-group-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.28);
+    margin-bottom: 4px;
+  }
+  .entrega-item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    gap: 4px;
+  }
+  .entrega-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 10px;
+    height: 10px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f8b967'%3E%3Cpath d='M7,12 A5,5 0 0,0 17,12 Z M12,7 A5,5 0 0,1 12,17 Z M7,12 A5,5 0 0,1 17,12 Z M12,7 A5,5 0 0,0 12,17 Z'/%3E%3Ccircle cx='12' cy='12' r='2.2'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+  .entrega-parent { font-weight: 600; color: white; }
+  .entrega-sub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 16px;
+    margin-top: 6px;
+  }
+  .entrega-sub-list span {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 400;
+  }
+  .entrega-sub-list span::before { content: '· '; }
+
+  .pacote-cta { width: 100%; justify-content: center; font-size: 15px; padding: 16px; }
+  .pacote-card .btn-outline {
+    border-color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+  }
+  .pacote-card .btn-outline:hover { border-color: white; color: white; background: rgba(255,255,255,0.06); }
+
+  .diff-compare {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+  }
+  .dc-row {
+    display: grid;
+    grid-template-columns: 1fr 180px 180px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dc-row:last-child { border-bottom: none; }
+  .dc-header { background: var(--bg-alt); }
+  .dc-col-label {
+    padding: 16px 24px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+    color: var(--text-muted);
+  }
+  .dc-col-label.highlight { background: var(--primary); color: white; }
+  .dc-feat { padding: 16px 28px; font-size: 15px; color: var(--text); display: flex; align-items: center; }
+  .dc-val {
+    padding: 16px;
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+  .dc-val.yes { color: var(--primary); }
+  .dc-val.no  { color: var(--text-light); font-size: 20px; }
+  .dc-val.highlight { background: var(--primary-light); }
+  .dc-val.highlight.yes { color: var(--primary); }
+
+  .dc-footer { background: var(--bg-alt); }
+  .dc-price-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    text-align: center;
+  }
+  .dc-price-cell.highlight { background: var(--primary-light); }
+  .btn-sm { padding: 10px 20px; font-size: 13px; }
+
+  @media (max-width: 900px) {
+    .pacotes-grid { grid-template-columns: 1fr; }
+    .dc-row { grid-template-columns: 1fr 120px 120px; }
+  }
+
+  @media (max-width: 640px) {
+    .pacote-card { padding: 32px 20px; }
+    .pacote-name { font-size: 32px; }
+    .hero-sub { font-size: 16px; }
+    .diff-compare {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: var(--radius-lg);
+    }
+    .dc-row { grid-template-columns: 1fr 96px 96px; min-width: 360px; }
+    .dc-feat { font-size: 13px; padding: 12px 14px; }
+    .dc-val { font-size: 15px; padding: 12px 8px; }
+    .dc-col-label { padding: 12px 8px; font-size: 12px; }
+    .dc-price-cell { padding: 16px 8px; }
+    .btn-sm { padding: 8px 12px; font-size: 12px; white-space: nowrap; }
+  }
+</style>

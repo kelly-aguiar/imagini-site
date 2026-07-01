@@ -1,0 +1,150 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">
+        <img src="/images/logo-imagini.png" alt="Imagini" />
+      </a>
+      <p class="footer-tagline">
+        Marketing com alma,<br />estratégia e verdade.
+      </p>
+      <div class="footer-social">
+        <a href="https://instagram.com/imagini.mkt" target="_blank" rel="noopener" aria-label="Instagram da Imagini">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="https://linkedin.com/company/imagini-mkt" target="_blank" rel="noopener" aria-label="LinkedIn da Imagini">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-nav">
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <a href="/">Início</a>
+        <a href="/sobre">Sobre</a>
+        <a href="/servicos">Serviços</a>
+        <a href="/portfolio">Portfólio</a>
+        <a href="/noticias">Notícias</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <a href="/servicos#gestao">Gestão de Redes Sociais</a>
+        <a href="/servicos#conteudo">Criação de Conteúdo</a>
+        <a href="/servicos#trafego">Tráfego Pago</a>
+        <a href="/servicos#branding">Branding</a>
+        <a href="/servicos#consultoria">Consultoria</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <a href="mailto:atendimento@imagini-mkt.com">atendimento@imagini-mkt.com</a>
+        <a href="/contato">Fale conosco</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; {year} Imagini Marketing Digital. Todos os direitos reservados.</p>
+      <p class="footer-love">Feito com estratégia e propósito.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--bg-dark);
+    color: rgba(255,255,255,0.8);
+    padding-top: 72px;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    padding-bottom: 64px;
+  }
+
+  .footer-logo img { height: 32px; filter: brightness(0) invert(1); margin-bottom: 20px; }
+
+  .footer-tagline {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+    margin-bottom: 28px;
+  }
+
+  .footer-social { display: flex; gap: 12px; }
+  .footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.5);
+    transition: all 0.2s;
+  }
+  .footer-social a:hover { border-color: var(--accent); color: var(--accent); }
+
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .footer-col { display: flex; flex-direction: column; gap: 12px; }
+  .footer-col h4 {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .footer-col a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    transition: color 0.18s;
+  }
+  .footer-col a:hover { color: white; }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 20px 0;
+  }
+  .footer-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.3); }
+  .footer-love { font-style: italic; }
+
+  @media (max-width: 900px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+    .footer-nav { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .footer-nav { grid-template-columns: 1fr; }
+    .footer-bottom .container { flex-direction: column; text-align: center; }
+  }
+</style>

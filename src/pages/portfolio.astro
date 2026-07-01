@@ -1,0 +1,306 @@
+---
+import Layout from '../layouts/Layout.astro';
+import clientesData from '../data/clientes.json';
+
+const { clientes } = clientesData;
+---
+
+<Layout
+  title="Portfólio"
+  description="Cases e clientes da Imagini — parcerias reais com resultados consistentes."
+>
+
+  <!-- HERO -->
+  <section class="portfolio-hero">
+    <div class="container">
+      <div class="section-label">Cases e clientes</div>
+      <h1 class="display">
+        Parcerias que<br />fazem a <em>diferença.</em>
+      </h1>
+      <p class="hero-sub">
+        Cada case é uma história de escuta ativa, planejamento sério e crescimento sustentável. Conheça algumas das marcas que confiaram na Imagini.
+      </p>
+    </div>
+  </section>
+
+  <!-- GALERIA DE CLIENTES -->
+  <section class="clientes-section">
+    <div class="container">
+      <div class="section-label" style="justify-content:center; margin-bottom:48px;">Marcas que confiam no nosso trabalho</div>
+      <div class="logos-grid">
+        {clientes.map(c => (
+          <div class="logo-card">
+            <div class="logo-img-wrap">
+              <img src={c.logo} alt={c.nome} loading="lazy" />
+            </div>
+            <span class="logo-servico">{c.servico}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- REDES DE FRANQUIAS -->
+  <section class="alt franquias-section">
+    <div class="container">
+      <div class="franquias-inner">
+        <div class="franquias-text">
+          <div class="section-label">Especialidade</div>
+          <h2 class="h2">Atendemos redes<br />de franquias.</h2>
+          <p>
+            Gerenciar a presença digital de uma rede de franquias é um dos desafios mais complexos do marketing digital: são dezenas — ou centenas — de franqueados com perfis locais e regionais que precisam comunicar com a identidade da marca nacional, respeitando as particularidades de cada praça.
+          </p>
+          <p>
+            A Imagini tem experiência consolidada nesse modelo. Fazemos a gestão dos perfis locais e regionais dos franqueados, garantindo consistência de voz, identidade visual e calendário editorial — em escala, com qualidade e sem perder o que torna cada unidade especial para a sua comunidade.
+          </p>
+        </div>
+        <div class="franquias-cards">
+          <div class="fcard">
+            <div class="fcard-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12,0 L24,0 L24,24 L0,24 L0,12 A12,12 0 0,0 12,0 Z"/></svg>
+            </div>
+            <h3>Padronização de marca</h3>
+            <p>Voz, visual e tom consistentes em todos os perfis da rede.</p>
+          </div>
+          <div class="fcard">
+            <div class="fcard-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M2,12 A10,10 0 0,0 22,12 Z"/></svg>
+            </div>
+            <h3>Gestão em escala</h3>
+            <p>Processos e conteúdo que funcionam para dezenas de unidades simultaneamente.</p>
+          </div>
+          <div class="fcard">
+            <div class="fcard-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M0,0 L24,0 L24,12 A12,12 0 0,0 12,24 L0,24 Z"/></svg>
+            </div>
+            <h3>Identidade local preservada</h3>
+            <p>Cada franqueado mantém sua personalidade dentro dos padrões da marca-mãe.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS -->
+  <section class="dark">
+    <div class="container">
+      <div class="section-label" style="justify-content:center;">Em números</div>
+      <h2 class="h2" style="color:white; text-align:center; margin-bottom:64px;">
+        Resultados que você consegue medir
+      </h2>
+      <div class="numeros-grid">
+        {[
+          { n: '+300',  l: 'perfis ativos gerenciados (Instagram, Facebook e YouTube)' },
+          { n: 'Redes', l: 'de franquias — perfis locais e regionais de franqueados' },
+          { n: '+7',    l: 'setores de atuação' },
+          { n: '100%',  l: 'relacionamento transparente' },
+        ].map(item => (
+          <div class="numero-item">
+            <span class="numero-val">{item.n}</span>
+            <span class="numero-label">{item.l}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTO -->
+  <section class="alt">
+    <div class="container" style="max-width:800px;">
+      <div class="section-label">O que dizem</div>
+      <h2 class="h2" style="margin-bottom:48px;">A parceria na visão de quem vive</h2>
+      <div class="depo-list">
+        <div class="depo-card">
+          <p class="depo-text">
+            "A Imagini entende o que a gente precisa de verdade. Não chegaram com fórmula pronta — chegaram com perguntas certas."
+          </p>
+          <div class="depo-author">
+            <div class="depo-dot"></div>
+            <span>Cliente Imagini</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="container" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">Sua empresa pode ser o próximo</div>
+      <h2 class="h2" style="margin-bottom:20px;">
+        Que tal construirmos<br />juntos o seu case?
+      </h2>
+      <p style="color:var(--text-muted); font-size:17px; margin-bottom:40px; max-width:460px; margin-left:auto; margin-right:auto;">
+        Comece com uma conversa honesta sobre o que você realmente precisa.
+      </p>
+      <a href="/contato" class="btn btn-primary" style="font-size:16px; padding:16px 36px;">Fale conosco →</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .portfolio-hero {
+    padding: 96px 0 80px;
+    background: linear-gradient(135deg, var(--primary-light) 0%, white 60%);
+  }
+  .portfolio-hero h1 { margin: 16px 0 24px; }
+  .portfolio-hero h1 em { font-style: normal; color: var(--primary); }
+  .hero-sub { font-size: 19px; color: var(--text-muted); max-width: 560px; line-height: 1.7; }
+
+  .clientes-section { padding: 64px 0 80px; }
+
+  .logos-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+
+  .logo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 28px 20px 22px;
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: all 0.22s;
+  }
+  .logo-card:hover {
+    border-color: var(--primary-mid);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+  }
+
+  .logo-img-wrap {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-img-wrap img {
+    max-width: 100%;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .logo-servico {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-light);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+  }
+
+  .franquias-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .franquias-text p {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-top: 20px;
+    max-width: 520px;
+  }
+  .franquias-cards { display: flex; flex-direction: column; gap: 16px; padding-top: 8px; }
+  .fcard {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    transition: all 0.2s;
+  }
+  .fcard:hover { border-color: var(--primary-mid); box-shadow: var(--shadow); }
+  .fcard-icon { color: var(--accent); margin-bottom: 10px; display: flex; }
+  .fcard h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .fcard p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+  .numeros-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+  .numero-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 24px;
+    background: rgba(255,255,255,0.05);
+    border-radius: var(--radius-lg);
+    gap: 12px;
+  }
+  .numero-val {
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .numero-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .depo-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+  }
+  .depo-text {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+  .depo-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .depo-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  @media (max-width: 1024px) {
+    .logos-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .logos-grid { grid-template-columns: repeat(3, 1fr); }
+    .numeros-grid { grid-template-columns: 1fr 1fr; }
+    .franquias-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 640px) {
+    .logos-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .logo-card { padding: 20px 14px 16px; }
+    .logo-img-wrap { height: 60px; }
+    .logo-img-wrap img { max-height: 60px; }
+    .numeros-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .numero-item { padding: 32px 16px; }
+    .numero-val { font-size: 36px; }
+    .numero-label { font-size: 12px; }
+    .fcard { padding: 20px 24px; }
+  }
+</style>

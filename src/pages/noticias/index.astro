@@ -1,0 +1,190 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('noticias'))
+  .sort((a, b) => b.data.data.getTime() - a.data.data.getTime());
+
+const categorias = [...new Set(posts.map(p => p.data.categoria).filter(Boolean))];
+---
+
+<Layout
+  title="Notícias e Artigos"
+  description="Conteúdo sobre marketing digital, redes sociais, branding e crescimento sustentável."
+>
+
+  <!-- HERO -->
+  <section class="news-hero">
+    <div class="container">
+      <div class="section-label">Conteúdo</div>
+      <h1 class="display">Notícias &<br />Artigos</h1>
+      <p class="hero-sub">
+        Reflexões, estratégias e insights sobre marketing digital ético, redes sociais e crescimento sustentável.
+      </p>
+    </div>
+  </section>
+
+  <!-- FILTROS (decorativos) -->
+  {categorias.length > 0 && (
+    <section style="padding:0 0 48px;">
+      <div class="container">
+        <div class="filtros">
+          <span class="filtro-item active">Todos</span>
+          {categorias.map(cat => (
+            <span class="filtro-item">{cat}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- LISTA -->
+  <section style="padding-top:0;">
+    <div class="container">
+      {posts.length === 0 ? (
+        <div class="empty-state">
+          <p>Em breve, novos artigos por aqui.</p>
+          <a href="/contato" class="btn btn-outline" style="margin-top:24px;">Fale conosco</a>
+        </div>
+      ) : (
+        <div class="posts-grid">
+          {posts.map((post, i) => (
+            <a
+              href={`/noticias/${post.slug}`}
+              class:list={['post-card', { featured: i === 0 }]}
+            >
+              {post.data.imagem && (
+                <div class="post-img">
+                  <img src={post.data.imagem} alt={post.data.titulo} loading="lazy" />
+                </div>
+              )}
+              <div class="post-body">
+                <div class="post-meta">
+                  {post.data.categoria && <span class="tag">{post.data.categoria}</span>}
+                  <time>{post.data.data.toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' })}</time>
+                </div>
+                <h2 class="h3">{post.data.titulo}</h2>
+                <p class="post-excerpt">{post.data.resumo}</p>
+                <span class="post-cta">Ler artigo →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- CTA NEWSLETTER / CONTATO -->
+  <section class="alt">
+    <div class="container" style="text-align:center; max-width:600px;">
+      <div class="section-label" style="justify-content:center;">Fique por dentro</div>
+      <h2 class="h2" style="margin-bottom:16px;">Conteúdo que faz sentido para o seu negócio</h2>
+      <p style="color:var(--text-muted); font-size:17px; margin-bottom:36px;">
+        Quer conversar sobre estratégia digital ou ter um diagnóstico personalizado? Fale com a gente.
+      </p>
+      <a href="/contato" class="btn btn-primary">Fale conosco →</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .news-hero {
+    padding: 96px 0 64px;
+    background: linear-gradient(135deg, var(--primary-light) 0%, white 60%);
+  }
+  .news-hero h1 { margin: 16px 0 24px; }
+  .hero-sub { font-size: 19px; color: var(--text-muted); max-width: 520px; line-height: 1.7; }
+
+  .filtros { display: flex; flex-wrap: wrap; gap: 8px; }
+  .filtro-item {
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1.5px solid var(--border);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .filtro-item.active,
+  .filtro-item:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-light);
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all 0.22s;
+    text-decoration: none;
+    color: inherit;
+    background: white;
+  }
+  .post-card:hover {
+    border-color: var(--primary-mid);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+  }
+  .post-card.featured {
+    grid-column: span 2;
+    flex-direction: row;
+  }
+  .post-card.featured .post-img { width: 45%; flex-shrink: 0; }
+  .post-card.featured .post-body { padding: 40px; }
+  .post-card.featured .post-excerpt { font-size: 16px; }
+  .post-card.featured h2 { font-size: 28px; }
+
+  .post-img { height: 220px; overflow: hidden; background: var(--bg-alt); }
+  .post-img img { width: 100%; height: 100%; object-fit: cover; object-position: left center; }
+
+  .post-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .post-meta time { font-size: 13px; color: var(--text-light); }
+  .post-card h2 { line-height: 1.3; }
+  .post-card:hover h2 { color: var(--primary); }
+  .post-excerpt { font-size: 14px; color: var(--text-muted); line-height: 1.6; flex: 1; }
+  .post-cta { font-size: 14px; font-weight: 700; color: var(--primary); margin-top: auto; }
+
+  .empty-state {
+    text-align: center;
+    padding: 80px 0;
+    color: var(--text-muted);
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (max-width: 900px) {
+    .posts-grid { grid-template-columns: 1fr 1fr; }
+    .post-card.featured { grid-column: span 2; flex-direction: column; }
+    .post-card.featured .post-img { width: 100%; }
+  }
+
+  @media (max-width: 640px) {
+    .posts-grid { grid-template-columns: 1fr; }
+    .post-card.featured { grid-column: span 1; }
+  }
+</style>

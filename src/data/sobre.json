@@ -1,0 +1,29 @@
+{
+  "metodologia": [
+    { "titulo": "Escuta Ativa",           "descricao": "Compreendemos profundamente seu negócio, objetivos e limitações. Nenhuma estratégia começa sem que a gente entenda o que você realmente precisa." },
+    { "titulo": "Planejamento Estratégico","descricao": "Criamos estratégias viáveis baseadas em dados reais. Sem projeções irreais, sem expectativas ilusórias." },
+    { "titulo": "Execução Responsável",   "descricao": "Implementamos ações com transparência e acompanhamento constante. Você sabe exatamente o que está sendo feito e por quê." },
+    { "titulo": "Relacionamento Verdadeiro","descricao": "Comunicação clara, honesta e acolhedora em cada etapa. Uma parceria de verdade — presente e comprometida ao longo de toda a jornada." },
+    { "titulo": "Resultados Sustentáveis","descricao": "Focamos em crescimento consistente e duradouro. Crescimento sólido, consistente e que perdura." }
+  ],
+  "visao_pares": [
+    { "de": "Marketing",   "e": "Gestão" },
+    { "de": "Estratégia",  "e": "Humanidade" },
+    { "de": "Crescimento", "e": "Consciência" },
+    { "de": "Negócio",     "e": "Educação" }
+  ],
+  "mercado_entrega": [
+    "Estratégias baseadas em projeções irreais",
+    "Conteúdo sem planejamento ou propósito",
+    "Vendedores que somem após o contrato",
+    "Expectativas ilusórias que frustram",
+    "Atendimento pesado e burocrático"
+  ],
+  "imagini_entrega": [
+    "Marketing estratégico com base em dados reais",
+    "Conteúdo com planejamento sério e propósito definido",
+    "Parceria genuína, escuta ativa e honestidade total",
+    "Compromisso com resultados viáveis, nunca ilusórios",
+    "Atendimento leve, responsável e sem sobrecarregar ninguém"
+  ]
+}

@@ -1,0 +1,148 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('noticias');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const dataFormatada = post.data.data.toLocaleDateString('pt-BR', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<Layout
+  title={post.data.titulo}
+  description={post.data.resumo}
+  image={post.data.imagem}
+>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb-bar">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Caminho">
+        <a href="/">Início</a>
+        <span>›</span>
+        <a href="/noticias">Notícias</a>
+        <span>›</span>
+        <span aria-current="page">{post.data.titulo}</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ARTICLE HERO -->
+  <section class="article-hero">
+    <div class="container article-hero-inner">
+      {post.data.categoria && <span class="tag">{post.data.categoria}</span>}
+      <h1 class="display" style="margin: 20px 0 24px;">{post.data.titulo}</h1>
+      <p class="article-lead">{post.data.resumo}</p>
+      <div class="article-meta">
+        <time>{dataFormatada}</time>
+        <span class="sep">·</span>
+        <span>Imagini</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- COVER IMAGE -->
+  {post.data.imagem && (
+    <div class="container">
+      <div class="article-cover">
+        <img src={post.data.imagem} alt={post.data.titulo} loading="eager" />
+      </div>
+    </div>
+  )}
+
+  <!-- CONTENT -->
+  <section class="article-body">
+    <div class="container">
+      <article class="prose">
+        <Content />
+      </article>
+
+      <!-- SHARE / BACK -->
+      <div class="article-footer">
+        <a href="/noticias" class="btn btn-outline">← Voltar para Notícias</a>
+        <a href="/contato" class="btn btn-primary">Fale com a Imagini</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .breadcrumb-bar {
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+  }
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-light);
+  }
+  .breadcrumb a { color: var(--text-muted); }
+  .breadcrumb a:hover { color: var(--primary); }
+  .breadcrumb [aria-current] { color: var(--text); font-weight: 500; }
+  .breadcrumb span.sep { color: var(--border); }
+
+  .article-hero {
+    padding: 72px 0 48px;
+    background: linear-gradient(135deg, var(--primary-light) 0%, white 70%);
+  }
+  .article-hero-inner { max-width: 760px; }
+  .article-lead {
+    font-size: 20px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-light);
+  }
+  .sep { color: var(--border); }
+
+  .article-cover {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    margin: 48px auto;
+    max-height: 480px;
+  }
+  .article-cover img { width: 100%; height: 480px; object-fit: cover; object-position: left center; }
+
+  .article-body { padding: 48px 0 80px; }
+  .article-body .container { max-width: 760px; }
+
+  .article-footer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 640px) {
+    .article-hero { padding: 48px 0 32px; }
+    .article-lead { font-size: 17px; }
+    .article-cover img { height: 220px; }
+    .article-footer { flex-direction: column; }
+    .article-footer .btn { width: 100%; justify-content: center; text-align: center; }
+  }
+</style>

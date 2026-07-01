@@ -1,0 +1,280 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+locale: pt
+
+collections:
+
+  # ─── NOTÍCIAS E ARTIGOS ───────────────────────────────────────────────────
+  - name: noticias
+    label: Notícias e Artigos
+    label_singular: Artigo
+    folder: src/content/noticias
+    create: true
+    slug: "{{slug}}"
+    identifier_field: titulo
+    summary: "{{titulo}} — {{data}}"
+    fields:
+      - label: Título
+        name: titulo
+        widget: string
+        hint: "Título do artigo (claro e direto)"
+
+      - label: Resumo
+        name: resumo
+        widget: text
+        hint: "Breve descrição para listagens e SEO (máx. 200 caracteres)"
+
+      - label: Data de publicação
+        name: data
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD/MM/YYYY"
+        time_format: false
+
+      - label: Categoria
+        name: categoria
+        widget: select
+        required: false
+        options:
+          - Marketing Digital
+          - Redes Sociais
+          - Tráfego Pago
+          - Branding
+          - Estratégia
+          - Notícia
+
+      - label: Imagem de capa
+        name: imagem
+        widget: image
+        required: false
+        hint: "Imagem principal do artigo (ideal: 1200×630px)"
+
+      - label: Destacar na home?
+        name: destaque
+        widget: boolean
+        default: false
+
+      - label: Conteúdo
+        name: body
+        widget: markdown
+        hint: "Escreva o artigo aqui. Use os botões de formatação acima."
+
+  # ─── CONFIGURAÇÕES DO SITE ────────────────────────────────────────────────
+  - name: configuracoes
+    label: "⚙️ Configurações do Site"
+    files:
+
+      # CLIENTES / PORTFÓLIO
+      - name: clientes
+        label: "Clientes (Portfólio)"
+        file: src/data/clientes.json
+        fields:
+          - name: clientes
+            label: Lista de clientes
+            label_singular: Cliente
+            widget: list
+            summary: "{{fields.nome}}"
+            fields:
+              - label: Nome do cliente
+                name: nome
+                widget: string
+              - label: Logo
+                name: logo
+                widget: image
+                hint: "Ideal: fundo transparente (PNG), mínimo 400px de largura"
+              - label: Serviços prestados
+                name: servico
+                widget: string
+                hint: "Ex: Redes Sociais e Tráfego Pago"
+
+      # SERVIÇOS
+      - name: servicos
+        label: "Serviços e Pacotes"
+        file: src/data/servicos.json
+        fields:
+          - name: lista
+            label: Serviços individuais
+            label_singular: Serviço
+            widget: list
+            summary: "{{fields.nome}}"
+            fields:
+              - label: Nome do serviço
+                name: nome
+                widget: string
+              - label: Descrição curta
+                name: descricao
+                widget: text
+              - label: Ícone
+                name: icone
+                widget: select
+                hint: "Escolha o ícone que aparece ao lado do serviço"
+                options:
+                  - { label: "Quadrado côncavo (topo)", value: qtl }
+                  - { label: "Círculo", value: circle }
+                  - { label: "Cúpula", value: dome }
+                  - { label: "Meia-lua lateral", value: dright }
+                  - { label: "Quadrado côncavo (base)", value: qbr }
+                  - { label: "Tigela", value: bowl }
+                  - { label: "Flor Akoma", value: akoma }
+
+          - name: presence_setup
+            label: "Pacote Presence — Setup (entregas únicas)"
+            widget: list
+            hint: "Itens entregues uma única vez no início da parceria"
+
+          - name: presence_social_media
+            label: "Pacote Presence — Itens do Social Media Management"
+            widget: list
+            hint: "Subitens dentro do Social Media Management mensal"
+
+          - name: presence_mensais
+            label: "Pacote Presence — Mensais adicionais"
+            widget: list
+            hint: "Outros serviços mensais do pacote Presence"
+
+          - name: structure_setup
+            label: "Pacote Structure — Setup adicional"
+            widget: list
+            hint: "Itens extras de setup do Structure (além do Presence)"
+
+          - name: structure_mensais
+            label: "Pacote Structure — Mensais adicionais"
+            widget: list
+            hint: "Serviços mensais extras do Structure (além do Presence)"
+
+          - name: comparativo
+            label: "Tabela comparativa Presence vs Structure"
+            label_singular: Item da tabela
+            widget: list
+            summary: "{{fields.item}}"
+            fields:
+              - label: Funcionalidade
+                name: item
+                widget: string
+              - label: Incluído no Presence?
+                name: presence
+                widget: boolean
+                default: false
+              - label: Incluído no Structure?
+                name: structure
+                widget: boolean
+                default: true
+
+      # PÁGINA INICIAL
+      - name: homepage
+        label: "Página Inicial"
+        file: src/data/homepage.json
+        fields:
+          - label: Label do hero
+            name: hero_label
+            widget: string
+            hint: "Texto pequeno acima do título (ex: Crescimento consciente)"
+
+          - label: Título — linha 1
+            name: hero_titulo_1
+            widget: string
+
+          - label: Título — linha 2 (em destaque vermelho)
+            name: hero_titulo_2
+            widget: string
+
+          - label: Subtítulo do hero
+            name: hero_subtitulo
+            widget: text
+
+          - label: Botão primário
+            name: hero_cta_primario
+            widget: string
+
+          - label: Botão secundário
+            name: hero_cta_secundario
+            widget: string
+
+          - name: stats
+            label: Estatísticas (números abaixo do hero)
+            label_singular: Estatística
+            widget: list
+            summary: "{{fields.numero}} — {{fields.label}}"
+            fields:
+              - { label: Número, name: numero, widget: string }
+              - { label: Descrição, name: label, widget: string }
+
+          - label: Título da seção de diferenciais
+            name: diferenciais_titulo
+            widget: string
+
+          - name: diferenciais
+            label: Diferenciais
+            label_singular: Diferencial
+            widget: list
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Descrição, name: descricao, widget: text }
+
+          - label: Título do CTA final
+            name: cta_titulo
+            widget: text
+
+          - label: Subtítulo do CTA final
+            name: cta_subtitulo
+            widget: string
+
+          - label: Botão primário do CTA
+            name: cta_botao_primario
+            widget: string
+
+          - label: Botão secundário do CTA
+            name: cta_botao_secundario
+            widget: string
+
+      # PÁGINA SOBRE
+      - name: sobre
+        label: "Página Sobre"
+        file: src/data/sobre.json
+        fields:
+          - name: metodologia
+            label: Metodologia (como trabalhamos)
+            label_singular: Etapa
+            widget: list
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: Título da etapa, name: titulo, widget: string }
+              - { label: Descrição, name: descricao, widget: text }
+
+          - name: visao_pares
+            label: "Visão — Pares de conceitos"
+            label_singular: Par
+            widget: list
+            summary: "{{fields.de}} + {{fields.e}}"
+            fields:
+              - { label: Conceito 1, name: de, widget: string }
+              - { label: Conceito 2, name: e, widget: string }
+
+          - name: mercado_entrega
+            label: "Comparativo — O que o mercado entrega (coluna esquerda)"
+            widget: list
+            hint: "Cada item aparece com ✕ na coluna esquerda"
+
+          - name: imagini_entrega
+            label: "Comparativo — O que a Imagini entrega (coluna direita)"
+            widget: list
+            hint: "Cada item aparece com ✓ na coluna direita. Deve ter o mesmo número de itens que a coluna esquerda."
+
+      # INFORMAÇÕES DE CONTATO
+      - name: contato
+        label: "Informações de Contato"
+        file: src/data/contato.json
+        fields:
+          - { label: E-mail, name: email, widget: string }
+          - { label: "Instagram (handle, ex: @imagini.mkt)", name: instagram_handle, widget: string }
+          - { label: "Instagram (link completo)", name: instagram_url, widget: string }
+          - { label: "LinkedIn (nome da página)", name: linkedin_label, widget: string }
+          - { label: "LinkedIn (link completo)", name: linkedin_url, widget: string }
+          - { label: Texto da promessa de resposta, name: promessa_texto, widget: text }
+          - { label: Prazo de resposta, name: promessa_prazo, widget: string, hint: "Ex: Em até 24h nos dias úteis." }
